@@ -1,12 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
+import { ToastProvider } from 'react-toast-notifications';
+
+import { GlobalStateContainer } from './provider/GlobalStateContainer';
+
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <GlobalStateContainer.Provider>
+      <BrowserRouter>
+        <ToastProvider
+          autoDismiss
+          autoDismissTimeout={6000}
+          placement="bottom-center"
+        >
+          <App />
+        </ToastProvider>
+      </BrowserRouter>
+    </GlobalStateContainer.Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
