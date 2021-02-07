@@ -1,12 +1,12 @@
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-import { BreakpointProvider } from 'react-socks';
+import React from "react";
+import { Route, Switch } from "react-router-dom";
+import { BreakpointProvider } from "react-socks";
 
-import { GlobalStateContainer } from './provider/GlobalStateContainer';
+import { GlobalStateContainer } from "./provider/GlobalStateContainer";
 
-import LandingPage from './pages/landing';
+import LandingPage from "./pages/landing";
 
-import { Routes } from './utils/routes';
+import { Routes } from "./utils/routes";
 
 function App() {
   const globalState = GlobalStateContainer.useContainer();

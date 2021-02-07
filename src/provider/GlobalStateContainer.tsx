@@ -1,12 +1,12 @@
-import { useState } from 'react';
-import { createContainer } from 'unstated-next';
+import { useState } from "react";
+import { createContainer } from "unstated-next";
 
 function useGlobalState() {
-
-  const [testState, setTestState] = useState<string>('test');
+  const [testState, setTestState] = useState<string>("test");
 
   return {
-    testState, setTestState
+    testState,
+    setTestState,
   };
 }
 
