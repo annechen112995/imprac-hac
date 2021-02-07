@@ -1,14 +1,12 @@
-import React from 'react';
-import { useHistory } from 'react-router-dom';
-import { useToasts } from 'react-toast-notifications';
+import React, { useState } from 'react';
 
-import { Routes } from '../../utils/routes';
+import Recipe from './recipe';
 
-import Logo from '../../images/logo.jpg';
+import Logo from '../../images/logo.gif';
 
 export default function LandingPage() {
-  const history = useHistory();
-  const { addToast } = useToasts();
+  const [ showRecipe, setShowRecipe ] = useState(false);
+  const [ randIdx, setRandIdx ] = useState(-1);
 
   return (
     <div className={`
@@ -27,14 +25,15 @@ export default function LandingPage() {
         <p className={`
           col-span-1 mx-10
           flex flex-row justify-center
-          text-2xl font-semibold
+          text-5xl font-bold
         `}>
           All You Can't Eat
         </p>
       </div>
 
       <p className="mx-32 py-20">
-        TODO: Add info text here explaining the website and its usage.
+        Not sure what you wanna cook? Click "Get Recipe" below to generate a
+        random recipe!
       </p>
 
       <button
@@ -52,14 +51,16 @@ export default function LandingPage() {
           hover:border-transparent focus:outline-none
         `}
         onClick={() => {
-          addToast(
-            `TODO: Show random recipe`,
-            { appearance: 'success' }
-          );
+          setRandIdx(Math.floor(Math.random() * 5));
+          setShowRecipe(true);
         }}
       >
         Get Recipe
       </button>
+
+      {showRecipe && randIdx !== -1 &&
+        <Recipe randIdx={randIdx}/>
+      }
     </div>
   );
 }
